@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organization Registration</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Your CSS styles for this page go here */
+        img {
+            width: 200px;
+            border-radius: 100px;
+            align-content: left;
+            margin-left: 10px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: #df0707; /* Change the background color as needed */
+            color: white; /* Change the text color as needed */
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .organization-form {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        input[type="submit"] {
+            background-color: #df0707;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Organization Registration</h1>
+        <img src="images/logo.png" alt="Profile Picture" />
+        <p>Connecting Volunteers with Local Nonprofits</p>
+    </header>
+
+    <!-- Organization Details Form -->
+    <section class="organization-form">
+        <h2>Organization Details</h2>
+        <form id="organization-form">
+            <label for="org-name">Organization Name:</label>
+            <input type="text" id="org-name" name="org-name" required>
+
+            <label for="disaster-status">Status of Disaster:</label>
+            <input type="text" id="disaster-status" name="disaster-status" required>
+
+            <label for="affected-country">Affected Country:</label>
+            <input type="text" id="affected-country" name="affected-country" required>
+
+            <label for="description">Detailed Description:</label>
+            <textarea id="description" name="description" rows="4" required></textarea>
+
+            <input type="submit" value="Submit">
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Community Service Opportunities</p>
+    </footer>
+
+    <script>
+        // Add an event listener to the form submission
+        document.getElementById('organization-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Get the user-entered data
+            const orgName = document.getElementById('org-name').value;
+            const disasterStatus = document.getElementById('disaster-status').value;
+            const affectedCountry = document.getElementById('affected-country').value;
+            const description = document.getElementById('description').value;
+
+            // Create an object to store the organization data
+            const orgData = {
+                name: orgName,
+                status: disasterStatus,
+                country: affectedCountry,
+                description
+            };
+
+            // Retrieve the existing data or initialize an empty array
+            const existingData = JSON.parse(localStorage.getItem('organizationData')) || [];
+
+            // Add the new organization data to the array
+            existingData.push(orgData);
+
+            // Store the updated array in local storage
+            localStorage.setItem('organizationData', JSON.stringify(existingData));
+
+            // Show a thank you message
+            alert('Thank you! Your organization details have been submitted.');
+
+            // Redirect to the home page or any other page you prefer
+            window.location.href = 'add-disaster.html';
+        });
+    </script>
+</body>
+</html>

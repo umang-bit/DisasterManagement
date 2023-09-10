@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Sign-up</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Your existing CSS styles */
+        /* ... */
+    </style>
+</head>
+<body>
+    <header>
+        <div>
+            <h1>Volunteer Sign-up</h1>
+            <img src="images/logo.png" alt="Profile Picture" />
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="signup-form">
+            <h2>Create Your Volunteer Account</h2>
+            <form id="signup-form">
+                <label for="full-name">Full Name</label>
+                <input type="text" id="full-name" name="full-name" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+
+                <label for="skills">Skills (comma-separated)</label>
+                <input type="text" id="skills" name="skills">
+
+                <button type="button" class="btn" onclick="submitForm()">Sign Up</button>
+            </form>
+        </section>
+        <p>Already a volunteer? <a href="display.html">View volunteer details</a></p>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Community Service Opportunities</p>
+    </footer>
+
+    <script>
+        function submitForm() {
+            // Get form data
+            const fullName = document.getElementById('full-name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const skills = document.getElementById('skills').value.split(',');
+
+            // Create an object to represent the volunteer
+            const volunteer = {
+                fullName,
+                email,
+                password,
+                skills,
+            };
+
+            // Store the volunteer data in local storage
+            const volunteers = JSON.parse(localStorage.getItem('volunteers')) || [];
+            volunteers.push(volunteer);
+            localStorage.setItem('volunteers', JSON.stringify(volunteers));
+
+            // Clear the form
+            document.getElementById('signup-form').reset();
+
+            // Redirect to a thank you page with user's name
+            window.location.href = `thankyou.html?name=${encodeURIComponent(fullName)}`;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monetary Donation Details</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Your CSS styles for displaying data go here */
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Monetary Donation Details</h1>
+        <img src="images/logo.png" alt="Profile Picture" />
+        <p>Connecting Volunteers with Local Nonprofits</p>
+    </header>
+
+    <section class="monetary-details">
+        <h2>Stored Volunteer Data</h2>
+        <div id="volunteer-data">
+            <!-- Volunteer data will be displayed here -->
+        </div>
+    </section>
+
+    <script>
+        // Retrieve and display volunteer data from local storage
+        const volunteerData = JSON.parse(localStorage.getItem('volunteerData'));
+
+        if (volunteerData) {
+            const volunteerDataContainer = document.getElementById('volunteer-data');
+
+            for (const [key, value] of Object.entries(volunteerData)) {
+                const dataItem = document.createElement('p');
+                dataItem.textContent = `${key}: ${value}`;
+                volunteerDataContainer.appendChild(dataItem);
+            }
+        }
+    </script>
+</body>
+</html>

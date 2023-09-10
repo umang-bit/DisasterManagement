@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organization Sign-up</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            width: 200px;
+            border-radius: 100px;
+            margin-left: 10px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #2009cd;
+            color: white;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .signup-form h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .signup-form label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .signup-form input[type="text"],
+        .signup-form input[type="email"],
+        .signup-form input[type="password"],
+        .signup-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-size: 16px;
+        }
+
+        .signup-form button {
+            background-color: #2009cd;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .signup-form button:hover {
+            background-color: #160681;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div>
+            <h1>Organization Sign-up</h1>
+            <img src="images/logo.png" alt="Profile Picture" />
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="signup-form">
+            <h2>Create Your Organization Account</h2>
+            <form id="org-signup-form">
+                <label for="org-name">Organization Name</label>
+                <input type="text" id="org-name" name="org-name" required>
+
+                <label for="org-email">Email</label>
+                <input type="email" id="org-email" name="org-email" required>
+
+                <label for="org-password">Password</label>
+                <input type="password" id="org-password" name="org-password" required>
+
+                <label for="org-description">Description</label>
+                <textarea id="org-description" name="org-description" rows="4" required></textarea>
+
+                <button type="submit" class="btn">Sign Up</button>
+            </form>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Community Service Opportunities</p>
+    </footer>
+
+    <script>
+        // Add an event listener to the form submission
+        document.getElementById('org-signup-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Get the user-entered data
+            const orgName = document.getElementById('org-name').value;
+            const orgEmail = document.getElementById('org-email').value;
+            const orgPassword = document.getElementById('org-password').value;
+            const orgDescription = document.getElementById('org-description').value;
+
+            // Create an object to store the data
+            const orgData = {
+                name: orgName,
+                email: orgEmail,
+                password: orgPassword,
+                description: orgDescription
+            };
+
+            // Store the data in local storage
+            localStorage.setItem('orgData', JSON.stringify(orgData));
+
+            // Redirect to the thank you page
+            window.location.href = 'thankyouorg.html';
+        });
+    </script>
+</body>
+</html>
+
+

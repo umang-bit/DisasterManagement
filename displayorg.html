@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registered Organizations</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        /* Add your CSS styles for organization details display here */
+    </style>
+</head>
+<body>
+    <header>
+        <div>
+            <h1>Registered Organizations</h1>
+            <img src="images/logo.png" alt="Profile Picture" />
+        </div>
+    </header>
+
+    <div class="container" id="org-list">
+        <!-- Organization details will be displayed here -->
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Community Service Opportunities</p>
+    </footer>
+
+    <script>
+        // Retrieve organization data from local storage
+        const orgDataArray = Object.values(JSON.parse(localStorage.getItem('orgData')));
+
+        // Display organization details
+        const orgListContainer = document.getElementById('org-list');
+        orgDataArray.forEach((orgData, index) => {
+            const orgDiv = document.createElement('div');
+            orgDiv.className = 'org-details';
+
+            const orgName = document.createElement('h2');
+            orgName.textContent = `Organization ${index + 1}: ${orgData.name}`;
+
+            const orgEmail = document.createElement('p');
+            orgEmail.textContent = `Email: ${orgData.email}`;
+
+            const orgDescription = document.createElement('p');
+            orgDescription.textContent = `Description: ${orgData.description}`;
+
+            orgDiv.appendChild(orgName);
+            orgDiv.appendChild(orgEmail);
+            orgDiv.appendChild(orgDescription);
+
+            orgListContainer.appendChild(orgDiv);
+        });
+    </script>
+</body>
+</html>

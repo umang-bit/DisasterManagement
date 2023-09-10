@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - Disaster Relief Project</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            width: 200px;
+            border-radius: 100px;
+            margin-left: 10px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #09cd20;
+            color: white;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .signin-form h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .signin-form label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .signin-form input[type="email"],
+        .signin-form input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-size: 16px;
+        }
+
+        .signin-form button {
+            background-color: #09cd20;
+            color: white;
+            padding: 20px 40px;
+            border: none;
+            border-radius: 20px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .signin-form button:hover {
+            background-color: #0aaf21;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div>
+            <h1>Disaster Relief Opportunities</h1>
+            <img src="images/logo.png" alt="Profile Picture" />
+            <p>Connecting Volunteers with Local Nonprofits</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="signin-form">
+            <h2>Sign In</h2>
+            <form >
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <a href="disfororg.html" class="btn">Sign In </a>
+            </form>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Community Service Opportunities</p>
+    </footer>
+</body>
+</html>

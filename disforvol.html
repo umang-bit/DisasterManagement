@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disaster Relief Project</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Your CSS styles for this page go here */
+        img {
+            width: 200px;
+            border-radius: 100px;
+            align-content: left;
+            margin-left: 10px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: #df0707; /* Change the background color as needed */
+            color: white; /* Change the text color as needed */
+        }
+
+        .disaster-list {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            /* Your styles for the disaster list go here */
+        }
+
+        .disaster {
+            /* Your styles for individual disasters go here */
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
+        }
+
+        .volunteer-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 5px 10px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-left: 10px;
+            align-content: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Disaster Relief Opportunities</h1>
+        <img src="images/logo.png" alt="Profile Picture" />
+        <p>Connecting Volunteers with Local Nonprofits</p>
+    </header>
+
+    <section class="disaster-list">
+        <!-- Existing disaster entries will be displayed here -->
+        <article class="disaster">
+            <h2><a href="disaster1.html">Measles and Rubella Outbreak</a></h2>
+            <p>Status: Ongoing</p>
+            <p>Type: Epidemic</p>
+            <p>Affected Country: Krygystan</p>
+            <p>Organization: UN</p>
+        </article>
+        <article class="disaster">
+            <h2><a href="disaster2.html">Floods and Landslides</a></h2>
+            <p>Status: Ongoing</p>
+            <p>Type: Natural</p>
+            <p>Affected Country: Bangladesh</p>
+            <p>Organization: UN</p>
+        </article>
+        <!-- Add more disaster entries as needed -->
+        
+        <!-- Newly added disasters from local storage will be displayed here -->
+        <div id="newDisasters"></div>
+    </section>
+
+    <section>
+        <h2><a href="volunteer.html" class="volunteer-button">Volunteer</a></h2>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Community Service Opportunities</p>
+    </footer>
+
+    <script>
+        // Retrieve newly added disasters from local storage
+        const newDisasters = JSON.parse(localStorage.getItem('newDisasters')) || [];
+
+        // Display newly added disasters
+        const newDisastersContainer = document.getElementById('newDisasters');
+        newDisasters.forEach((disaster, index) => {
+            const disasterHtml = `
+                <article class="disaster">
+                    <h2><a href="#">${disaster.name}</a></h2>
+                    <p>Status: ${disaster.status}</p>
+                    <p>Type: ${disaster.type}</p>
+                    <p>Affected Country: ${disaster.country}</p>
+                    <p>Organization: ${disaster.organization}</p>
+                </article>
+            `;
+            newDisastersContainer.innerHTML += disasterHtml;
+        });
+    </script>
+</body>
+</html>
+
+

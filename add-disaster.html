@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newly Added Disasters</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Your CSS styles for this page go here */
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: #df0707; /* Change the background color as needed */
+            color: white; /* Change the text color as needed */
+        }
+
+        .disaster-list {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Newly Added Disasters</h1>
+        <a href="disforvol.html">Back to Home</a>
+    </header>
+
+    <!-- Display Newly Added Disasters -->
+    <section class="disaster-list">
+        <h2>Newly Added Disasters</h2>
+        <ul id="disaster-list">
+            <!-- JavaScript will populate this list -->
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Community Service Opportunities</p>
+    </footer>
+
+    <script>
+        // Retrieve the organization data from local storage
+        const organizationData = JSON.parse(localStorage.getItem('organizationData'));
+
+        // Get the UL element to populate with disaster details
+        const disasterList = document.getElementById('disaster-list');
+
+        // Check if there's organization data
+        if (organizationData && organizationData.length > 0) {
+            // Iterate through the organization data and create list items for each disaster
+            organizationData.forEach((org) => {
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `
+                    <strong>Organization Name:</strong> ${org.name}<br>
+                    <strong>Status of Disaster:</strong> ${org.status}<br>
+                    <strong>Affected Country:</strong> ${org.country}<br>
+                    <strong>Detailed Description:</strong> ${org.description}
+                `;
+                disasterList.appendChild(listItem);
+            });
+        } else {
+            // If no organization data is available, display a message
+            disasterList.innerHTML = '<p>No newly added disasters at the moment.</p>';
+        }
+    </script>
+</body>
+</html>
+
